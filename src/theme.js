@@ -19,7 +19,7 @@ export const token = mode => ({
 					100: '#d0d1d5',
 					200: '#a1a4ab',
 					300: '#727681',
-					400: '#434957',
+					400: '#1F2A40', //manually changed
 					500: '#141b2d',
 					600: '#101624',
 					700: '#0c101b',
@@ -76,7 +76,7 @@ export const token = mode => ({
 					100: '#040509',
 					200: '#080b12',
 					300: '#0c101b',
-					400: '#f2f0f0',
+					400: '#f2f0f0', //manually changed
 					500: '#141b2d',
 					600: '#434957',
 					700: '#727681',
@@ -139,7 +139,7 @@ const themeSettings = mode => {
 							dark: colors.grey[700],
 						},
 						background: {
-							default: colors.blueAccent[500],
+							default: colors.primary[500],
 						},
 				  }
 				: {
@@ -161,31 +161,50 @@ const themeSettings = mode => {
 		},
 		typography: {
 			fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-			fontSize: '12px',
+			fontSize: 12,
 
 			h1: {
 				fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-				fontSize: '40px',
+				fontSize: 40,
 			},
 			h2: {
 				fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-				fontSize: '32px',
+				fontSize: 32,
 			},
 			h3: {
 				fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-				fontSize: '24px',
+				fontSize: 24,
 			},
 			h4: {
 				fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-				fontSize: '20px',
+				fontSize: 20,
 			},
 			h5: {
 				fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-				fontSize: '16px',
+				fontSize: 16,
 			},
 			h6: {
 				fontFamily: ['Source Sance Pro', 'sans-serif'].join(','),
-				fontSize: '14px',
+				fontSize: 14,
+			},
+		},
+		components: {
+			MuiAppBar: {
+				styleOverrides: {
+					root: {
+						backgroundColor: 'transparent',
+						backgroundImage: 'none',
+					},
+				},
+			},
+			MuiDrawer: {
+				styleOverrides: {
+					paper: {
+						backgroundColor: colors.primary[400],
+						// backgroundImage:
+						// 	'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))',
+					},
+				},
 			},
 		},
 	};
@@ -206,9 +225,7 @@ export const useMode = () => {
 		[]
 	);
 
-	const theme = useMemo(() => {
-		createTheme(themeSettings(mode));
-	}, [mode]);
+	const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
 	return [theme, colorMode];
 };
