@@ -45,12 +45,18 @@ const Contacts = () => {
 						borderBottom: 'none',
 					},
 					'& .MuiDataGrid-cell': { borderBottom: 'none' },
+					'& .MuiDataGrid-virtualScroller': {
+						backgroundColor: colors.primary[400],
+					},
 					'& .MuiDataGrid-footerContainer': {
 						backgroundColor: colors.blueAccent[700],
 						borderTop: 'none',
 					},
 					'& .MuiDataGrid-toolbarContainer .MuiButton-text': {
 						color: `${colors.grey[100]} !important`,
+					},
+					'& .MuiCheckbox-root': {
+						color: `${colors.greenAccent[200]} !important`,
 					},
 				}}
 			>
@@ -61,6 +67,7 @@ const Contacts = () => {
 						toolbar: GridToolbar,
 					}}
 					sx={{ height: '73vh' }}
+					checkboxSelection
 				/>
 			</Box>
 		</Box>
