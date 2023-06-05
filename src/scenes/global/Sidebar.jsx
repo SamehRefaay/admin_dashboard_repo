@@ -14,7 +14,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import elonMusk from '../../assets/images/Elon-Musk-PNG.png';
-import { token } from '../../theme';
+import stev from '../../assets/images/stev.png';
+import { tokens } from '../../theme';
 import HomeIcon from '@mui/icons-material/Home';
 import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
@@ -27,9 +28,9 @@ import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 
-const Sidebar = ({ drawerWidth, open, handleDrawerClose }) => {
+const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 	const theme = useTheme();
-	const colors = token(theme.palette.mode);
+	const colors = tokens(theme.palette.mode);
 
 	const openedMixin = theme => ({
 		width: drawerWidth,
@@ -82,7 +83,7 @@ const Sidebar = ({ drawerWidth, open, handleDrawerClose }) => {
 		<Drawer variant="permanent" open={open}>
 			<DrawerHeader
 				style={{
-					height: '69px',
+					height: appBarHeight,
 					display: 'flex',
 					justifyContent: 'space-around',
 				}}
@@ -110,19 +111,19 @@ const Sidebar = ({ drawerWidth, open, handleDrawerClose }) => {
 					flexDirection="column"
 					justifyContent={'center'}
 					alignItems={'center'}
-					mt={'30px'}
+					mt={'15px'}
 				>
 					<Avatar
 						alt="my-avatar"
-						src={elonMusk}
+						src={stev}
 						sx={{
-							width: '100px',
-							height: '100px',
+							width: '60px',
+							height: '60px',
+							backgroundSize: 'cover',
 							backgroundColor: colors.primary[500],
 						}}
-						imgProps={{ objectFit: 'cover' }}
 					/>
-					<Typography variant="h3" fontWeight="bold" color="inherit" mt={1}>
+					<Typography variant="h4" fontWeight="bold" color="inherit" mt={1}>
 						S.Refaay
 					</Typography>
 					<Typography variant="h6" color={colors.greenAccent[500]} gutterBottom>
@@ -132,28 +133,35 @@ const Sidebar = ({ drawerWidth, open, handleDrawerClose }) => {
 			)}
 
 			<List>
-				{['Dashoard'].map((text, index) => (
-					<ListItem key={text} disablePadding sx={{ display: 'block' }}>
-						<ListItemButton
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? 'initial' : 'center',
-								px: 2.5,
-							}}
-						>
-							<ListItemIcon
+				{[{ text: 'Dashboard', link: '/', icon: <HomeIcon /> }].map(
+					(item, index) => (
+						<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+							<ListItemButton
 								sx={{
-									minWidth: 0,
-									mr: open ? 3 : 'auto',
-									justifyContent: 'center',
+									minHeight: 48,
+									justifyContent: open ? 'initial' : 'center',
+									px: 2.5,
 								}}
+								LinkComponent="a"
+								href={item.link}
 							>
-								<HomeIcon />
-							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-						</ListItemButton>
-					</ListItem>
-				))}
+								<ListItemIcon
+									sx={{
+										minWidth: 0,
+										mr: open ? 3 : 'auto',
+										justifyContent: 'center',
+									}}
+								>
+									{item.icon}
+								</ListItemIcon>
+								<ListItemText
+									primary={item.text}
+									sx={{ opacity: open ? 1 : 0 }}
+								/>
+							</ListItemButton>
+						</ListItem>
+					)
+				)}
 			</List>
 			<Divider />
 			{open && (
@@ -164,9 +172,17 @@ const Sidebar = ({ drawerWidth, open, handleDrawerClose }) => {
 
 			<List>
 				{[
-					{ text: 'Manage Team', icon: <Diversity3OutlinedIcon /> },
-					{ text: 'Contracts Information', icon: <ContactsOutlinedIcon /> },
-					{ text: 'Invoices', icon: <ReceiptIcon /> },
+					{
+						text: 'Manage Team',
+						link: '/team',
+						icon: <Diversity3OutlinedIcon />,
+					},
+					{
+						text: 'Contacts Information',
+						link: '/contacts',
+						icon: <ContactsOutlinedIcon />,
+					},
+					{ text: 'Invoices', link: '/invoices', icon: <ReceiptIcon /> },
 				].map((item, index) => (
 					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
 						<ListItemButton
@@ -175,6 +191,8 @@ const Sidebar = ({ drawerWidth, open, handleDrawerClose }) => {
 								justifyContent: open ? 'initial' : 'center',
 								px: 2.5,
 							}}
+							LinkComponent="a"
+							href={item.link}
 						>
 							<ListItemIcon
 								sx={{

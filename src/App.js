@@ -1,14 +1,15 @@
 import { ColorModeContext, useMode } from './theme';
-import { CssBaseline, ThemeProvider, Typography } from '@mui/material';
-import Topbar from './scenes/Global/Topbar';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import Topbar from './scenes/global/Topbar';
 import { Routes, Route } from 'react-router-dom';
-import Dashborad from './scenes/Dashborad/index';
-import Sidebar from './scenes/Global/Sidebar';
+import Sidebar from './scenes/global/Sidebar';
 import { useState } from 'react';
-import User from './scenes/User/User';
+
+import { Dashborad, Team, Contacts } from './scenes';
 
 function App() {
 	const drawerWidth = 240;
+	const appBarHeight = 69;
 	const [theme, colorMode] = useMode();
 	const [open, setOpen] = useState(true);
 
@@ -30,20 +31,25 @@ function App() {
 						open={open}
 						handleDrawerOpen={handleDrawerOpen}
 					/>
-					<div style={{ display: 'flex' }}>
+					<Box display="flex" width="100%">
 						<Sidebar
 							drawerWidth={drawerWidth}
+							appBarHeight={appBarHeight}
 							open={open}
 							handleDrawerClose={handleDrawerClose}
 						/>
 						<main
+							style={{
+								width: '100%',
+								marginTop: appBarHeight,
+								height: `calc(100vh - ${appBarHeight})`,
+							}}
 							className="content"
-							sx={{ flexGrow: 1, p: 3, border: '2px solid red' }}
 						>
 							<Routes>
 								<Route path="/" element={<Dashborad />} />
-								{/* <Route path="/teams" element={<Teams />} /> */}
-								{/* <Route path="/contracts" element={<Contracts />} /> */}
+								<Route path="/team" element={<Team />} />
+								<Route path="/contacts" element={<Contacts />} />
 								{/* <Route path="/invoices" element={<Invoices />} /> */}
 								{/* <Route path="/profile" element={<Profile />} /> */}
 								{/* <Route path="/calendar" element={<Calendar />} /> */}
@@ -54,7 +60,7 @@ function App() {
 								{/* <Route path="/geo" element={<Geography />} /> */}
 							</Routes>
 						</main>
-					</div>
+					</Box>
 				</div>
 			</ThemeProvider>
 		</ColorModeContext.Provider>

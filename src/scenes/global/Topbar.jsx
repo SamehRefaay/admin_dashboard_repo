@@ -1,16 +1,9 @@
 import React, { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 
-import {
-	AppBar,
-	Box,
-	IconButton,
-	InputBase,
-	Toolbar,
-	Typography,
-} from '@mui/material';
+import { Box, IconButton, InputBase, Toolbar } from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
-import { ColorModeContext, token } from '../../theme';
+import { ColorModeContext, tokens } from '../../theme';
 import SearchIcon from '@mui/icons-material/Search';
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
@@ -21,7 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const Topbar = ({ drawerWidth, open, handleDrawerOpen }) => {
 	const theme = useTheme();
-	const colors = token(theme.palette.mode);
+	const colors = tokens(theme.palette.mode);
 	const colorMode = useContext(ColorModeContext);
 
 	const AppBar = styled(MuiAppBar, {
@@ -71,7 +64,7 @@ const Topbar = ({ drawerWidth, open, handleDrawerOpen }) => {
 					{/* SEARCH BAR */}
 					<Box
 						display="flex"
-						backgroundColor={colors.primary[400]}
+						backgroundColor={colors.primary[500]}
 						borderRadius={'3px'}
 					>
 						<InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search">

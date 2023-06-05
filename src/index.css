@@ -9,20 +9,9 @@ body,
 	font-family: 'Source-Sance-Pro', sans-serif;
 }
 
-.content {
-	width: 100%;
-	height: calc(100% - 69px);
-	font-family: 'Source-Sance-Pro', sans-serif;
-}
-
 .app {
 	display: flex;
 	/* position: relative; */
-}
-
-.content {
-	border: 1px sold green;
-	margin-top: 69px;
 }
 
 ::-webkit-scrollbar {

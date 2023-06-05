@@ -1,5 +1,4 @@
 import { tokens } from '../theme';
-
 export const mockDataTeam = [
 	{
 		id: 1,
@@ -45,7 +44,7 @@ export const mockDataTeam = [
 		id: 6,
 		name: 'Ever Melisandre',
 		email: 'evermelisandre@gmail.com',
-		age: 150,
+		age: 51,
 		phone: '(232)545-6483',
 		access: 'manager',
 	},
@@ -135,7 +134,7 @@ export const mockDataContacts = [
 		id: 6,
 		name: 'Ever Melisandre',
 		email: 'evermelisandre@gmail.com',
-		age: 150,
+		age: 51,
 		phone: '(232)545-6483',
 		address: '1234 Canvile Street, Esvazark, NY 10001',
 		city: 'Esvazark',
