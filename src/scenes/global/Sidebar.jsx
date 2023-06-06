@@ -219,9 +219,17 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 			)}
 			<List>
 				{[
-					{ text: 'Profile Form', icon: <Person2OutlinedIcon /> },
-					{ text: 'Calendar', icon: <CalendarTodayOutlinedIcon /> },
-					{ text: 'FAQ Page', icon: <HelpOutlineOutlinedIcon /> },
+					{
+						text: 'Profile Form',
+						link: '/profile',
+						icon: <Person2OutlinedIcon />,
+					},
+					{
+						text: 'Calendar',
+						link: '/calendar',
+						icon: <CalendarTodayOutlinedIcon />,
+					},
+					{ text: 'FAQ Page', link: '/faq', icon: <HelpOutlineOutlinedIcon /> },
 				].map((item, index) => (
 					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
 						<ListItemButton
@@ -230,6 +238,8 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 								justifyContent: open ? 'initial' : 'center',
 								px: 2.5,
 							}}
+							LinkComponent="a"
+							href={item.link}
 						>
 							<ListItemIcon
 								sx={{

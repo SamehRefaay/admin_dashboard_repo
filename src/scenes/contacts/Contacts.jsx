@@ -10,17 +10,17 @@ const Contacts = () => {
 	const colors = tokens(theme.palette.mode);
 	const columns = [
 		{ field: 'id', headerName: 'ID', flex: 0.5 },
-		{ field: 'registrarId', headerName: 'Registrar Id', flex: 1 },
+		{ field: 'registrarId', headerName: 'Registrar Id' },
 		{
 			field: 'name',
 			headerName: 'Name',
 			flex: 1,
 			cellClassName: 'name-column--cell',
 		},
-		{ field: 'age', headerName: 'Age' },
+		{ field: 'age', headerName: 'Age', flex: 0.5 },
 		{ field: 'phone', headerName: 'Phone', flex: 1 },
-		{ field: 'email', headerName: 'Email', flex: 1.5 },
-		{ field: 'address', headerName: 'Address', flex: 2 },
+		{ field: 'email', headerName: 'Email', flex: 1 },
+		{ field: 'address', headerName: 'Address', flex: 1 },
 		{ field: 'city', headerName: 'City' },
 		{ field: 'zipCode', headerName: 'Zip Code' },
 	];
