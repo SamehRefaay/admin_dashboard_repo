@@ -6,3 +6,4 @@ export { default as Profile } from './profile/Profile';
 export { default as Calendar } from './calendar/Calendar';
 export { default as FAQ } from './faq/FAQ';
 export { default as Bar } from './bar/Bar';
+export { default as Pie } from './pie/Pie';
