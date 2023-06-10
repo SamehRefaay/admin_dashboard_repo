@@ -5,3 +5,4 @@ export { default as Invoices } from './invoices/Invoices';
 export { default as Profile } from './profile/Profile';
 export { default as Calendar } from './calendar/Calendar';
 export { default as FAQ } from './faq/FAQ';
+export { default as Bar } from './bar/Bar';

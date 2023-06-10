@@ -266,10 +266,10 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 			)}
 			<List>
 				{[
-					{ text: 'Bar Chart', icon: <BarChartOutlinedIcon /> },
-					{ text: 'Pie Chart', icon: <PieChartOutlinedIcon /> },
-					{ text: 'Line Chart', icon: <TimelineOutlinedIcon /> },
-					{ text: 'Geography Chart', icon: <MapOutlinedIcon /> },
+					{ text: 'Bar Chart', link: '/bar', icon: <BarChartOutlinedIcon /> },
+					{ text: 'Pie Chart', link: '/pie', icon: <PieChartOutlinedIcon /> },
+					{ text: 'Line Chart', link: '/line', icon: <TimelineOutlinedIcon /> },
+					{ text: 'Geography Chart', link: '/geo', icon: <MapOutlinedIcon /> },
 				].map((item, index) => (
 					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
 						<ListItemButton
@@ -278,6 +278,8 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 								justifyContent: open ? 'initial' : 'center',
 								px: 2.5,
 							}}
+							LinkComponent="a"
+							href={item.link}
 						>
 							<ListItemIcon
 								sx={{

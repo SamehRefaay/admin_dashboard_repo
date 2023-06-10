@@ -12,6 +12,7 @@ import {
 	Profile,
 	Calendar,
 	FAQ,
+	Bar,
 } from './scenes';
 
 function App() {
@@ -61,7 +62,7 @@ function App() {
 								<Route path="/profile" element={<Profile />} />
 								<Route path="/calendar" element={<Calendar />} />
 								<Route path="/faq" element={<FAQ />} />
-								{/* <Route path="/bar" element={<Bar />} /> */}
+								<Route path="/bar" element={<Bar />} />
 								{/* <Route path="/pie" element={<Pie />} /> */}
 								{/* <Route path="/line" element={<Line />} /> */}
 								{/* <Route path="/geo" element={<Geography />} /> */}
