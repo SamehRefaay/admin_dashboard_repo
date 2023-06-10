@@ -15,6 +15,7 @@ import {
 	Bar,
 	Pie,
 	Line,
+	Geography,
 } from './scenes';
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
 								<Route path="/bar" element={<Bar />} />
 								<Route path="/pie" element={<Pie />} />
 								<Route path="/line" element={<Line />} />
-								{/* <Route path="/geo" element={<Geography />} /> */}
+								<Route path="/geo" element={<Geography />} />
 							</Routes>
 						</main>
 					</Box>
