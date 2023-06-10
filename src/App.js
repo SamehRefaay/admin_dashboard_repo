@@ -11,6 +11,7 @@ import {
 	Invoices,
 	Profile,
 	Calendar,
+	FAQ,
 } from './scenes';
 
 function App() {
@@ -59,7 +60,7 @@ function App() {
 								<Route path="/invoices" element={<Invoices />} />
 								<Route path="/profile" element={<Profile />} />
 								<Route path="/calendar" element={<Calendar />} />
-								{/* <Route path="/profile" element={<User />} /> */}
+								<Route path="/faq" element={<FAQ />} />
 								{/* <Route path="/bar" element={<Bar />} /> */}
 								{/* <Route path="/pie" element={<Pie />} /> */}
 								{/* <Route path="/line" element={<Line />} /> */}
