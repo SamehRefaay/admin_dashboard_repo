@@ -4,7 +4,14 @@ import Topbar from './scenes/global/Topbar';
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './scenes/global/Sidebar';
 import { useState } from 'react';
-import { Dashborad, Team, Contacts, Invoices, Profile } from './scenes';
+import {
+	Dashborad,
+	Team,
+	Contacts,
+	Invoices,
+	Profile,
+	Calendar,
+} from './scenes';
 
 function App() {
 	const drawerWidth = 240;
@@ -51,7 +58,7 @@ function App() {
 								<Route path="/contacts" element={<Contacts />} />
 								<Route path="/invoices" element={<Invoices />} />
 								<Route path="/profile" element={<Profile />} />
-								{/* <Route path="/calendar" element={<Calendar />} /> */}
+								<Route path="/calendar" element={<Calendar />} />
 								{/* <Route path="/profile" element={<User />} /> */}
 								{/* <Route path="/bar" element={<Bar />} /> */}
 								{/* <Route path="/pie" element={<Pie />} /> */}
