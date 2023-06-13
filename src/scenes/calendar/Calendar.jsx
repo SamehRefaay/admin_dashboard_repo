@@ -140,16 +140,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-
-{
-	/* calendar sidebar 'events' */
-}
-// 		<Box
-//
-// 		flex={isMobile ? undefined : '1 1 20%'}
-//
-// 	>
-
-// 	</Box>
-//
-// </>

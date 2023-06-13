@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -13,7 +13,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
-import elonMusk from '../../assets/images/Elon-Musk-PNG.png';
 import stev from '../../assets/images/stev.png';
 import { tokens } from '../../theme';
 import HomeIcon from '@mui/icons-material/Home';
@@ -27,12 +26,11 @@ import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
-import { useMediaQuery } from '@mui/material';
 
 const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
-	
+
 	const openedMixin = theme => ({
 		width: drawerWidth,
 		transition: theme.transitions.create('width', {

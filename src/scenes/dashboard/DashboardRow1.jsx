@@ -1,4 +1,4 @@
-import { Box, Grid, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Grid, useTheme } from '@mui/material';
 import React from 'react';
 import StateBox from '../../components/StateBox';
 import EmailIcon from '@mui/icons-material/Email';
@@ -10,7 +10,7 @@ import { tokens } from '../../theme';
 const DashboardRow1 = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
-	const isMobile = useMediaQuery('(max-width:600px)');
+
 	return (
 		<>
 			<Grid item xs={12} md={6} lg={3}>

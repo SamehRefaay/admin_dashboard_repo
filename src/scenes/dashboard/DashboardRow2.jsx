@@ -1,11 +1,4 @@
-import {
-	Box,
-	Grid,
-	IconButton,
-	Typography,
-	useMediaQuery,
-	useTheme,
-} from '@mui/material';
+import { Box, Grid, IconButton, Typography, useTheme } from '@mui/material';
 import React from 'react';
 import LineChart from '../../components/LineChart';
 import { tokens } from '../../theme';
@@ -15,7 +8,7 @@ import { mockTransactions } from '../../data/mockData';
 const DashboardRow2 = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
-	const isMobile = useMediaQuery('(max-width:600px)');
+
 	return (
 		<>
 			<Grid item xs={12} lg={8}>

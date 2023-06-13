@@ -8,9 +8,7 @@ const LineChart = ({ isDashboard = false }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const isMobile = useMediaQuery('(max-width:600px)');
-	const isMedium = useMediaQuery('(max-width:900px)');
 	const isLarge = useMediaQuery('(max-width:1200px)');
-	const isXLarge = useMediaQuery('(max-width:1536px)');
 
 	return (
 		<ResponsiveLine
