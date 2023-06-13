@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -26,10 +27,46 @@ import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import { ListSubheader } from '@mui/material';
 
 const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
+
+	const dataList = [
+		{
+			text: 'Manage Team',
+			link: 'team',
+			icon: <Diversity3OutlinedIcon />,
+		},
+		{
+			text: 'Contacts Information',
+			link: 'contacts',
+			icon: <ContactsOutlinedIcon />,
+		},
+		{ text: 'Invoices', link: 'invoices', icon: <ReceiptIcon /> },
+	];
+
+	const pagesList = [
+		{
+			text: 'Profile Form',
+			link: 'profile',
+			icon: <Person2OutlinedIcon />,
+		},
+		{
+			text: 'Calendar',
+			link: 'calendar',
+			icon: <CalendarTodayOutlinedIcon />,
+		},
+		{ text: 'FAQ Page', link: 'faq', icon: <HelpOutlineOutlinedIcon /> },
+	];
+
+	const chartsList = [
+		{ text: 'Bar Chart', link: 'bar', icon: <BarChartOutlinedIcon /> },
+		{ text: 'Pie Chart', link: 'pie', icon: <PieChartOutlinedIcon /> },
+		{ text: 'Line Chart', link: 'line', icon: <TimelineOutlinedIcon /> },
+		{ text: 'Geography Chart', link: 'geo', icon: <MapOutlinedIcon /> },
+	];
 
 	const openedMixin = theme => ({
 		width: drawerWidth,
@@ -141,8 +178,8 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 									justifyContent: open ? 'initial' : 'center',
 									px: 2.5,
 								}}
-								LinkComponent="a"
-								href={item.link}
+								component={Link}
+								to="/"
 							>
 								<ListItemIcon
 									sx={{
@@ -163,26 +200,86 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 				)}
 			</List>
 			<Divider />
-			{open && (
-				<Typography variant="h6" m="10px 0 0 15px" color={colors.grey[500]}>
-					Data
-				</Typography>
-			)}
+			{/* data List */}
+			<List>
+				{open && (
+					<ListSubheader sx={{ backgroundColor: colors.primary[400] }}>
+						Data
+					</ListSubheader>
+				)}
+				{dataList.map((item, index) => (
+					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+						<ListItemButton
+							sx={{
+								minHeight: 48,
+								justifyContent: open ? 'initial' : 'center',
+								px: 2.5,
+							}}
+							component={Link}
+							to={`/${item.link}`}
+						>
+							<ListItemIcon
+								sx={{
+									minWidth: 0,
+									mr: open ? 3 : 'auto',
+									justifyContent: 'center',
+								}}
+							>
+								{item.icon}
+							</ListItemIcon>
+							<ListItemText
+								primary={item.text}
+								sx={{ opacity: open ? 1 : 0 }}
+							/>
+						</ListItemButton>
+					</ListItem>
+				))}
+			</List>
+			<Divider />
+			<List>
+				{open && (
+					<ListSubheader sx={{ backgroundColor: colors.primary[400] }}>
+						Pages
+					</ListSubheader>
+				)}
+				{pagesList.map((item, index) => (
+					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+						<ListItemButton
+							sx={{
+								minHeight: 48,
+								justifyContent: open ? 'initial' : 'center',
+								px: 2.5,
+							}}
+							component={Link}
+							to={`/${item.link}`}
+						>
+							<ListItemIcon
+								sx={{
+									minWidth: 0,
+									mr: open ? 3 : 'auto',
+									justifyContent: 'center',
+								}}
+							>
+								{item.icon}
+							</ListItemIcon>
+							<ListItemText
+								primary={item.text}
+								sx={{ opacity: open ? 1 : 0 }}
+							/>
+						</ListItemButton>
+					</ListItem>
+				))}
+			</List>
+			<Divider />
 
+			{/* charts List */}
 			<List>
-				{[
-					{
-						text: 'Manage Team',
-						link: '/team',
-						icon: <Diversity3OutlinedIcon />,
-					},
-					{
-						text: 'Contacts Information',
-						link: '/contacts',
-						icon: <ContactsOutlinedIcon />,
-					},
-					{ text: 'Invoices', link: '/invoices', icon: <ReceiptIcon /> },
-				].map((item, index) => (
+				{open && (
+					<ListSubheader sx={{ backgroundColor: colors.primary[400] }}>
+						Charts
+					</ListSubheader>
+				)}
+				{chartsList.map((item, index) => (
 					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
 						<ListItemButton
 							sx={{
@@ -190,95 +287,8 @@ const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 								justifyContent: open ? 'initial' : 'center',
 								px: 2.5,
 							}}
-							LinkComponent="a"
-							href={item.link}
-						>
-							<ListItemIcon
-								sx={{
-									minWidth: 0,
-									mr: open ? 3 : 'auto',
-									justifyContent: 'center',
-								}}
-							>
-								{item.icon}
-							</ListItemIcon>
-							<ListItemText
-								primary={item.text}
-								sx={{ opacity: open ? 1 : 0 }}
-							/>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</List>
-			<Divider />
-			{open && (
-				<Typography variant="h6" m="10px 0 0 15px" color={colors.grey[500]}>
-					Pages
-				</Typography>
-			)}
-			<List>
-				{[
-					{
-						text: 'Profile Form',
-						link: '/profile',
-						icon: <Person2OutlinedIcon />,
-					},
-					{
-						text: 'Calendar',
-						link: '/calendar',
-						icon: <CalendarTodayOutlinedIcon />,
-					},
-					{ text: 'FAQ Page', link: '/faq', icon: <HelpOutlineOutlinedIcon /> },
-				].map((item, index) => (
-					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-						<ListItemButton
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? 'initial' : 'center',
-								px: 2.5,
-							}}
-							LinkComponent="a"
-							href={item.link}
-						>
-							<ListItemIcon
-								sx={{
-									minWidth: 0,
-									mr: open ? 3 : 'auto',
-									justifyContent: 'center',
-								}}
-							>
-								{item.icon}
-							</ListItemIcon>
-							<ListItemText
-								primary={item.text}
-								sx={{ opacity: open ? 1 : 0 }}
-							/>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</List>
-			<Divider />
-			{open && (
-				<Typography variant="h6" m="10px 0 0 15px" color={colors.grey[500]}>
-					Charts
-				</Typography>
-			)}
-			<List>
-				{[
-					{ text: 'Bar Chart', link: '/bar', icon: <BarChartOutlinedIcon /> },
-					{ text: 'Pie Chart', link: '/pie', icon: <PieChartOutlinedIcon /> },
-					{ text: 'Line Chart', link: '/line', icon: <TimelineOutlinedIcon /> },
-					{ text: 'Geography Chart', link: '/geo', icon: <MapOutlinedIcon /> },
-				].map((item, index) => (
-					<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-						<ListItemButton
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? 'initial' : 'center',
-								px: 2.5,
-							}}
-							LinkComponent="a"
-							href={item.link}
+							component={Link}
+							to={`/${item.link}`}
 						>
 							<ListItemIcon
 								sx={{
