@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -27,11 +27,12 @@ import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import { useMediaQuery } from '@mui/material';
 
 const Sidebar = ({ drawerWidth, appBarHeight, open, handleDrawerClose }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
-
+	
 	const openedMixin = theme => ({
 		width: drawerWidth,
 		transition: theme.transitions.create('width', {

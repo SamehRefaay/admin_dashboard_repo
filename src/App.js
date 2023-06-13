@@ -1,9 +1,9 @@
 import { ColorModeContext, useMode } from './theme';
-import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import Topbar from './scenes/global/Topbar';
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './scenes/global/Sidebar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	Dashborad,
 	Team,
@@ -23,6 +23,12 @@ function App() {
 	const appBarHeight = 69;
 	const [theme, colorMode] = useMode();
 	const [open, setOpen] = useState(true);
+
+	const isMobile = useMediaQuery('(max-width:600px)');
+
+	useEffect(() => {
+		isMobile ? setOpen(false) : setOpen(true);
+	}, [isMobile]);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);

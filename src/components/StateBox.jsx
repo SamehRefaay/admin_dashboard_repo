@@ -3,7 +3,7 @@ import React from 'react';
 import { tokens } from '../theme';
 import Progress from './Progress';
 
-const StateBox = ({ icon, title, subtitle, progress, size }) => {
+const StateBox = ({ icon, title, subtitle, progress, increase, size }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	console.log(progress);
@@ -13,7 +13,7 @@ const StateBox = ({ icon, title, subtitle, progress, size }) => {
 			display="flex"
 			justifyContent="space-between"
 			alignItems="center"
-			bgcolor={colors.primary[400]}
+			flexWrap="wrap"
 			borderRadius="2px"
 		>
 			<Box
@@ -30,7 +30,17 @@ const StateBox = ({ icon, title, subtitle, progress, size }) => {
 					{subtitle}
 				</Typography>
 			</Box>
-			<Progress value={progress} size={size} />
+			<Box>
+				<Progress value={progress} size={size} />
+				<Typography
+					mt="8px"
+					fontStyle="italic"
+					variant="h5"
+					color={colors.greenAccent[500]}
+				>
+					{increase}
+				</Typography>
+			</Box>
 		</Box>
 	);
 };

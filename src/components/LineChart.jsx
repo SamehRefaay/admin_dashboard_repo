@@ -1,12 +1,16 @@
 import { ResponsiveLine } from '@nivo/line';
 import React from 'react';
 import { mockLineData as data } from '../data/mockData';
-import { useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { tokens } from '../theme';
 
 const LineChart = ({ isDashboard = false }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
+	const isMobile = useMediaQuery('(max-width:600px)');
+	const isMedium = useMediaQuery('(max-width:900px)');
+	const isLarge = useMediaQuery('(max-width:1200px)');
+	const isXLarge = useMediaQuery('(max-width:1536px)');
 
 	return (
 		<ResponsiveLine
@@ -45,7 +49,13 @@ const LineChart = ({ isDashboard = false }) => {
 				},
 			}}
 			colors={isDashboard ? { datum: 'color' } : { scheme: 'nivo' }} // added
-			margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+			margin={
+				isMobile
+					? { top: 40, right: 10, bottom: 50, left: 35 }
+					: isDashboard
+					? { top: 40, right: 110, bottom: 50, left: 60 }
+					: { top: 50, right: 110, bottom: 50, left: 60 }
+			}
 			xScale={{ type: 'point' }}
 			yScale={{
 				type: 'linear',
@@ -59,21 +69,22 @@ const LineChart = ({ isDashboard = false }) => {
 			axisTop={null}
 			axisRight={null}
 			axisBottom={{
+				tickValues: isMobile ? 3 : undefined,
 				tickSize: 5,
 				tickPadding: 5,
-				tickRotation: 0,
+				tickRotation: isLarge ? -45 : 0,
 				legend: 'transportation',
-				legendOffset: 36,
+				legendOffset: 40,
 				legendPosition: 'middle',
 			}}
 			axisLeft={{
-				tickValues: 5, // added
+				tickValues: isMobile || isDashboard ? 5 : undefined, // added
 				tickSize: 5,
 				tickPadding: 5,
 				tickRotation: 0,
 				legend: 'count',
-				legendOffset: -40,
-				legendPosition: 'middle',
+				legendOffset: isMobile ? -30 : -40,
+				legendPosition: isMobile ? 'start' : 'middle',
 			}}
 			enableGridX={false}
 			enableGridY={false}
@@ -83,32 +94,52 @@ const LineChart = ({ isDashboard = false }) => {
 			pointBorderColor={{ from: 'serieColor' }}
 			pointLabelYOffset={-12}
 			useMesh={true}
-			legends={[
-				{
-					anchor: 'bottom-right',
-					direction: 'column',
-					justify: false,
-					translateX: 100,
-					translateY: 0,
-					itemsSpacing: 0,
-					itemDirection: 'left-to-right',
-					itemWidth: 80,
-					itemHeight: 20,
-					itemOpacity: 0.75,
-					symbolSize: 12,
-					symbolShape: 'circle',
-					symbolBorderColor: 'rgba(0, 0, 0, .5)',
-					effects: [
-						{
-							on: 'hover',
-							style: {
-								itemBackground: 'rgba(0, 0, 0, .03)',
-								itemOpacity: 1,
+			legends={
+				isMobile
+					? [
+							{
+								anchor: 'top-left',
+								direction: 'row',
+								justify: false,
+								translateX: 0,
+								translateY: -30,
+								itemsSpacing: 0,
+								itemDirection: 'left-to-right',
+								itemWidth: 60,
+								itemHeight: 20,
+								itemOpacity: 0.75,
+								symbolSize: 12,
+								symbolShape: 'circle',
+								symbolBorderColor: 'rgba(0, 0, 0, .5)',
 							},
-						},
-					],
-				},
-			]}
+					  ]
+					: [
+							{
+								anchor: 'bottom-right',
+								direction: 'column',
+								justify: false,
+								translateX: 100,
+								translateY: 0,
+								itemsSpacing: 0,
+								itemDirection: 'left-to-right',
+								itemWidth: 80,
+								itemHeight: 20,
+								itemOpacity: 0.75,
+								symbolSize: 12,
+								symbolShape: 'circle',
+								symbolBorderColor: 'rgba(0, 0, 0, .5)',
+								effects: [
+									{
+										on: 'hover',
+										style: {
+											itemBackground: 'rgba(0, 0, 0, .03)',
+											itemOpacity: 1,
+										},
+									},
+								],
+							},
+					  ]
+			}
 		/>
 	);
 };

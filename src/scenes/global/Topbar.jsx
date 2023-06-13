@@ -1,7 +1,13 @@
 import React, { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 
-import { Box, IconButton, InputBase, Toolbar } from '@mui/material';
+import {
+	Box,
+	IconButton,
+	InputBase,
+	Toolbar,
+	useMediaQuery,
+} from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
 import { ColorModeContext, tokens } from '../../theme';
 import SearchIcon from '@mui/icons-material/Search';
@@ -16,6 +22,7 @@ const Topbar = ({ drawerWidth, open, handleDrawerOpen }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const colorMode = useContext(ColorModeContext);
+	const isMobile = useMediaQuery('(max-width:600px)');
 
 	const AppBar = styled(MuiAppBar, {
 		shouldForwardProp: prop => prop !== 'open',
@@ -57,22 +64,27 @@ const Topbar = ({ drawerWidth, open, handleDrawerOpen }) => {
 				</IconButton>
 				<Box
 					display="flex"
-					justifyContent={'space-between'}
-					p={2}
+					justifyContent={isMobile ? 'flex-start' : 'space-between'}
+					p={!isMobile ? 2 : '2 1'}
 					width={'100%'}
 				>
 					{/* SEARCH BAR */}
+
 					<Box
 						display="flex"
 						backgroundColor={colors.primary[500]}
 						borderRadius={'3px'}
 					>
-						<InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search">
+						<InputBase
+							sx={{ ml: isMobile ? 1 : 2, flex: 1 }}
+							placeholder="Search"
+						>
 							<IconButton>
 								<SearchIcon />
 							</IconButton>
 						</InputBase>
 					</Box>
+
 					{/* ICONS BOX */}
 					<Box display="flex">
 						<IconButton onClick={colorMode.toggleColorMode}>
